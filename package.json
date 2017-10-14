@@ -1,17 +1,29 @@
 {
-  "name": "nodejs-ex",
+  "name": "nodejs-server-for-university",
   "version": "0.0.1",
-  "description": "Node.js sample app for OpenShift 3",
+  "description": "Node.js app for OpenShift 3",
   "main": "server.js",
   "dependencies": {
+    "array-unique": "^0.3.2",
+    "body-parser": "^1.15.0",
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
-    "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "lowdb": "^1.0.0",
     "mocha": "^2.4.5",
-    "mongodb": "^2.1.16",
-    "morgan": "^1.7.0",
-    "object-assign":"4.1.0"
+    "object-assign": "4.1.0",
+    "swagger-ui-express": "^2.0.8",
+    "swaggerize-express": "^4.0.0",
+    "swagmock": "~0.0.2",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^2",
+    "is-my-json-valid": "^2.13.1",
+    "js-yaml": "^3.2.6",
+    "supertest": "^1.2.0",
+    "swagger-parser": "^3.4.1",
+    "tape": "^4"
   },
   "engine": {
     "node": "*",
@@ -19,16 +31,18 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
+    "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js",
+    "cover": "istanbul cover tape -- 'tests/**/*.js'",
+    "lint": "eslint .",
+    "regenerate": "yo swaggerize:test --framework express --apiPath './config/swagger.json'"
   },
   "repository": {
     "type": "git",
     "url": "http://github.com/openshift/nodejs-ex.git"
   },
-  "author": "Steve Speicher <sspeiche@gmail.com>",
   "license": "CC-BY-1.0",
-  "bugs": {
-    "url": "http://github.com/openshift/nodejs-ex/issues"
+  "generator-swaggerize": {
+    "version": "3.1.0"
   },
   "homepage": "http://github.com/openshift/nodejs-ex"
 }
